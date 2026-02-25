@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Port Check - Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -13,23 +15,35 @@
         <li><a href="dns.html">DNS</a></li>
         <li><a href="ping.html">Ping</a></li>
         <li><a href="http.html">HTTP</a></li>
-        <li><a href="port.html">Port</a></li>
+        <li><a href="port.html" class="active">Port</a></li>
     </ul>
 </nav>
 
 <div class="container">
     <div class="card">
         <h1>Port Check</h1>
+        <p class="subtitle">
+            Tests TCP connectivity from the server to a specific port.
+        </p>
+
         <div class="input-group">
-            <input type="text" placeholder="example.com">
-            <input type="number" placeholder="443">
-            <button>Test</button>
+            <input type="text" id="hostInput" placeholder="example.com" autocomplete="off">
+            <input type="number" id="portInput" placeholder="443" min="1" max="65535">
+            <button id="testBtn">Test</button>
         </div>
-        <div class="result">Port status will appear here.</div>
+
+        <div id="status" class="status idle">
+            Enter a host and port, then click Test.
+        </div>
+
+        <div id="resultBox" class="result hidden"></div>
     </div>
 </div>
 
-<div class="footer">© 2026 Adovasio Technology LLC</div>
+<div class="footer">
+    © 2026 Adovasio Technology LLC
+</div>
 
+<script src="assets/js/port.js"></script>
 </body>
 </html>
