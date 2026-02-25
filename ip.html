@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What's My IP • Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Adovasio Tools</div>
+    <ul>
+        <li><a href="ip.html" class="active">IP</a></li>
+        <li><a href="dns.html">DNS</a></li>
+        <li><a href="ping.html">Ping</a></li>
+        <li><a href="http.html">HTTP</a></li>
+        <li><a href="port.html">Port</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h1>What's My IP</h1>
+        <p class="subtitle">
+            Displays your public IP address and request metadata as seen by tools.adovasio.com.
+        </p>
+
+        <button id="checkBtn">Check My IP</button>
+
+        <div id="status" class="status idle">
+            Click the button to retrieve your IP information.
+        </div>
+
+        <div id="resultBox" class="result hidden"></div>
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 Adovasio Technology LLC
+</div>
+
+<script src="assets/js/ip.js"></script>
+</body>
+</html>
