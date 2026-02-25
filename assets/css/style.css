@@ -209,3 +209,14 @@ button:active {
     font-size: 0.85rem;
     margin-top: 4rem;
 }
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo img {
+    height: 38px;      /* controls visual size */
+    width: auto;
+    max-height: 50px;  /* hard cap safety */
+}
