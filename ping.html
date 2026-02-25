@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Ping Check - Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -11,7 +13,7 @@
     <ul>
         <li><a href="ip.html">IP</a></li>
         <li><a href="dns.html">DNS</a></li>
-        <li><a href="ping.html">Ping</a></li>
+        <li><a href="ping.html" class="active">Ping</a></li>
         <li><a href="http.html">HTTP</a></li>
         <li><a href="port.html">Port</a></li>
     </ul>
@@ -20,15 +22,27 @@
 <div class="container">
     <div class="card">
         <h1>Ping Test</h1>
+        <p class="subtitle">
+            Sends 3 ICMP packets from the server to the target host.
+        </p>
+
         <div class="input-group">
-            <input type="text" placeholder="example.com">
-            <button>Ping</button>
+            <input type="text" id="hostInput" placeholder="example.com" autocomplete="off">
+            <button id="pingBtn">Ping</button>
         </div>
-        <div class="result">Ping results will appear here.</div>
+
+        <div id="status" class="status idle">
+            Enter a host and click Ping.
+        </div>
+
+        <div id="resultBox" class="result hidden"></div>
     </div>
 </div>
 
-<div class="footer">© 2026 Adovasio Technology LLC</div>
+<div class="footer">
+    © 2026 Adovasio Technology LLC
+</div>
 
+<script src="assets/js/ping.js"></script>
 </body>
 </html>
