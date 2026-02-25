@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>HTTP Check - Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,7 +14,7 @@
         <li><a href="ip.html">IP</a></li>
         <li><a href="dns.html">DNS</a></li>
         <li><a href="ping.html">Ping</a></li>
-        <li><a href="http.html">HTTP</a></li>
+        <li><a href="http.html" class="active">HTTP</a></li>
         <li><a href="port.html">Port</a></li>
     </ul>
 </nav>
@@ -20,15 +22,27 @@
 <div class="container">
     <div class="card">
         <h1>HTTP Status Check</h1>
+        <p class="subtitle">
+            Performs a server-side HTTP request and returns response details.
+        </p>
+
         <div class="input-group">
-            <input type="text" placeholder="https://example.com">
-            <button>Check</button>
+            <input type="text" id="urlInput" placeholder="https://example.com" autocomplete="off">
+            <button id="checkBtn">Check</button>
         </div>
-        <div class="result">HTTP response details will appear here.</div>
+
+        <div id="status" class="status idle">
+            Enter a URL and click Check.
+        </div>
+
+        <div id="resultBox" class="result hidden"></div>
     </div>
 </div>
 
-<div class="footer">© 2026 Adovasio Technology LLC</div>
+<div class="footer">
+    © 2026 Adovasio Technology LLC
+</div>
 
+<script src="assets/js/http.js"></script>
 </body>
 </html>
