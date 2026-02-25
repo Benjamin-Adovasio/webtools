@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>DNS Lookup - Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -10,7 +12,7 @@
     <div class="logo">Adovasio Tools</div>
     <ul>
         <li><a href="ip.html">IP</a></li>
-        <li><a href="dns.html">DNS</a></li>
+        <li><a href="dns.html" class="active">DNS</a></li>
         <li><a href="ping.html">Ping</a></li>
         <li><a href="http.html">HTTP</a></li>
         <li><a href="port.html">Port</a></li>
@@ -20,22 +22,36 @@
 <div class="container">
     <div class="card">
         <h1>DNS Lookup</h1>
+        <p class="subtitle">
+            Query public DNS records from the server.
+        </p>
+
         <div class="input-group">
-            <input type="text" placeholder="example.com">
-            <select>
-                <option>A</option>
-                <option>AAAA</option>
-                <option>MX</option>
-                <option>TXT</option>
-                <option>NS</option>
+            <input type="text" id="domainInput" placeholder="example.com" autocomplete="off">
+            <select id="recordType">
+                <option value="A">A</option>
+                <option value="AAAA">AAAA</option>
+                <option value="MX">MX</option>
+                <option value="TXT">TXT</option>
+                <option value="NS">NS</option>
+                <option value="SOA">SOA</option>
+                <option value="CNAME">CNAME</option>
             </select>
-            <button>Lookup</button>
+            <button id="lookupBtn">Lookup</button>
         </div>
-        <div class="result">Results will appear here.</div>
+
+        <div id="status" class="status idle">
+            Enter a domain and click Lookup.
+        </div>
+
+        <div id="resultBox" class="result hidden"></div>
     </div>
 </div>
 
-<div class="footer">© 2026 Adovasio Technology LLC</div>
+<div class="footer">
+    © 2026 Adovasio Technology LLC
+</div>
 
+<script src="assets/js/dns.js"></script>
 </body>
 </html>
