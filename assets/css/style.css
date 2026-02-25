@@ -1,3 +1,7 @@
+/* ==============================
+   Adovasio Tools - Global Theme
+   ============================== */
+
 :root {
     --bg-main: #0f172a;
     --bg-card: #1e293b;
@@ -11,6 +15,7 @@
     --border: #334155;
 }
 
+/* Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,6 +28,10 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
 }
+
+/* ==============================
+   Navigation
+   ============================== */
 
 nav {
     background: var(--bg-nav);
@@ -49,11 +58,17 @@ nav a {
     text-decoration: none;
     color: var(--text-secondary);
     font-size: 0.95rem;
+    transition: color 0.2s ease;
 }
 
+nav a.active,
 nav a:hover {
     color: var(--accent);
 }
+
+/* ==============================
+   Layout
+   ============================== */
 
 .container {
     max-width: 900px;
@@ -68,10 +83,24 @@ nav a:hover {
     border: 1px solid var(--border);
 }
 
+/* ==============================
+   Typography
+   ============================== */
+
 h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
 }
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* ==============================
+   Forms
+   ============================== */
 
 .input-group {
     display: flex;
@@ -79,14 +108,28 @@ h1 {
     margin-bottom: 1.5rem;
 }
 
-input, select {
+input,
+select {
     flex: 1;
     padding: 0.8rem;
     background: #0b1220;
     border: 1px solid var(--border);
     border-radius: 6px;
     color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
 }
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+
+/* ==============================
+   Buttons
+   ============================== */
 
 button {
     padding: 0.8rem 1.5rem;
@@ -96,123 +139,20 @@ button {
     color: white;
     font-weight: 500;
     cursor: pointer;
+    transition: background 0.2s ease, transform 0.05s ease;
 }
 
 button:hover {
     background: var(--accent-hover);
 }
 
-.result {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #0b1220;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    white-space: pre-wrap;
+button:active {
+    transform: scale(0.98);
 }
 
-.footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-}
-
-
-:root {
-    --bg-main: #0f172a;
-    --bg-card: #1e293b;
-    --bg-nav: #0b1220;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --success: #14b8a6;
-    --error: #ef4444;
-    --border: #334155;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-body {
-    background: var(--bg-main);
-    color: var(--text-primary);
-    min-height: 100vh;
-}
-
-nav {
-    background: var(--bg-nav);
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav .logo {
-    font-weight: 600;
-    font-size: 1.2rem;
-    color: var(--accent);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-secondary);
-}
-
-nav a.active,
-nav a:hover {
-    color: var(--accent);
-}
-
-.container {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-}
-
-.card {
-    background: var(--bg-card);
-    padding: 2rem;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-}
-
-h1 {
-    margin-bottom: 0.5rem;
-}
-
-.subtitle {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-button {
-    padding: 0.8rem 1.5rem;
-    background: var(--accent);
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-button:hover {
-    background: var(--accent-hover);
-}
+/* ==============================
+   Status Messages
+   ============================== */
 
 .status {
     margin-top: 1rem;
@@ -235,6 +175,10 @@ button:hover {
     color: var(--error);
 }
 
+/* ==============================
+   Results Box
+   ============================== */
+
 .result {
     margin-top: 1.2rem;
     padding: 1rem;
@@ -244,15 +188,24 @@ button:hover {
     font-size: 0.9rem;
     white-space: pre-wrap;
     border: 1px solid var(--border);
+    color: var(--text-secondary);
+    overflow-x: auto;
 }
+
+/* Utility */
 
 .hidden {
     display: none;
 }
+
+/* ==============================
+   Footer
+   ============================== */
 
 .footer {
     text-align: center;
     padding: 2rem;
     color: var(--text-secondary);
     font-size: 0.85rem;
+    margin-top: 4rem;
 }
