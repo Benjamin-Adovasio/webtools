@@ -215,3 +215,10 @@ button:active {
     margin-top: 4rem;
 }
 
+
+
+nav .logo img {
+    height: 36px !important;
+    width: auto !important;
+    max-height: 40px !important;
+}
