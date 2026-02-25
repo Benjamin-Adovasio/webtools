@@ -48,7 +48,7 @@ nav .logo {
 }
 
 nav .logo img {
-    height: 36px;
+    height: 45px;
     width: auto;
     display: block;
 }
@@ -216,9 +216,3 @@ button:active {
 }
 
 
-
-nav .logo img {
-    height: 36px !important;
-    width: auto !important;
-    max-height: 40px !important;
-}
