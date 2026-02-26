@@ -43,14 +43,9 @@ nav {
 }
 
 nav .logo {
-    display: flex;
-    align-items: center;
-}
-
-nav .logo img {
-    height: 75px;
-    width: auto;
-    display: block;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--accent);
 }
 
 nav ul {
@@ -214,5 +209,3 @@ button:active {
     font-size: 0.85rem;
     margin-top: 4rem;
 }
-
-
