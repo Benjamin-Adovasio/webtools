@@ -18,16 +18,23 @@ function hideResult() {
     resultBox.textContent = "";
 }
 
-pingBtn.addEventListener("click", async () => {
+function setBusy(isBusy) {
+    pingBtn.disabled = isBusy;
+    statusEl.setAttribute("aria-busy", String(isBusy));
+}
+
+async function pingHost() {
     const host = hostInput.value.trim();
+
+    hideResult();
 
     if (!host) {
         setStatus("Please enter a host.", "error");
         return;
     }
 
+    setBusy(true);
     setStatus("Pinging host...", "loading");
-    hideResult();
 
     try {
         const response = await fetch("/api/ping", {
@@ -52,5 +59,15 @@ pingBtn.addEventListener("click", async () => {
     } catch (error) {
         showResult(error.toString());
         setStatus("Ping failed.", "error");
+    } finally {
+        setBusy(false);
+    }
+}
+
+pingBtn.addEventListener("click", pingHost);
+hostInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        pingBtn.click();
     }
 });

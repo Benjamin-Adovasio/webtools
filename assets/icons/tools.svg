@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="brand-mark" viewBox="0 0 48 48">
+    <path d="M10 37 23.7 8.5a1.2 1.2 0 0 1 2.2 0L39 37M16 25h17M13.3 32h23.1" fill="none" stroke="currentColor" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="9.5" cy="37.5" r="3" fill="currentColor"/>
+    <circle cx="24.8" cy="7.5" r="3" fill="currentColor"/>
+    <circle cx="39" cy="37.5" r="3" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="tool" viewBox="0 0 48 48">
+    <rect x="8" y="8" width="32" height="32" rx="10" fill="none" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M17 24h14M24 17v14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="file-converter" viewBox="0 0 48 48">
+    <path d="M12 8h15l7 7v9M27 8v8h7M36 40H21l-7-7v-9M21 40v-8h-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M10 18h17m0 0-4-4m4 4-4 4M38 30H21m0 0 4-4m-4 4 4 4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="pdf-tools" viewBox="0 0 48 48">
+    <path d="M13 6h15l8 8v28H13zM28 6v9h8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    <path d="M18 33v-9h3.2a3 3 0 0 1 0 6H18m9 3v-9h2.5c3 0 4.5 1.7 4.5 4.5S32.5 33 29.5 33zm11 0v-9h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="public-ip" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="2.3"/>
+    <path d="M7 24h34M24 7c5 4.7 8 10.4 8 17s-3 12.3-8 17c-5-4.7-8-10.4-8-17s3-12.3 8-17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+    <circle cx="35.5" cy="13" r="4.5" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="dns-lookup" viewBox="0 0 48 48">
+    <rect x="18" y="6" width="12" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="2.3"/>
+    <rect x="5" y="33" width="12" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="2.3"/>
+    <rect x="31" y="33" width="12" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="2.3"/>
+    <path d="M24 15v9M11 33v-5a4 4 0 0 1 4-4h18a4 4 0 0 1 4 4v5" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+    <circle cx="24" cy="24" r="2.5" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="ping" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="3.5" fill="currentColor"/>
+    <path d="M17.5 17.5a9.2 9.2 0 0 0 0 13M30.5 17.5a9.2 9.2 0 0 1 0 13M12 12a17 17 0 0 0 0 24M36 12a17 17 0 0 1 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="http-test" viewBox="0 0 48 48">
+    <rect x="6" y="9" width="36" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <path d="M6 17h36" fill="none" stroke="currentColor" stroke-width="2.4"/>
+    <circle cx="12" cy="13" r="1.5" fill="currentColor"/>
+    <circle cx="17" cy="13" r="1.5" fill="currentColor"/>
+    <path d="m17 28 4.5 4.5L31 23" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="port-check" viewBox="0 0 48 48">
+    <path d="M17 9v9M31 9v9M13 18h22v7a11 11 0 0 1-22 0zM24 36v7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19 25h10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="24" cy="25" r="3" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="arrow-right" viewBox="0 0 24 24">
+    <path d="M5 12h14m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="arrow-up-right" viewBox="0 0 24 24">
+    <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>

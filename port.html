@@ -1,49 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Port Check - Adovasio Tools</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Check | Adovasio Tools</title>
+    <meta name="description" content="Test TCP connectivity to a public host and port from the Adovasio server.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#05080c">
+    <link rel="canonical" href="https://tools.adovasio.com/port.html">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
 </head>
-<body>
+<body class="tool-page" data-page="network-tool" data-category="network-server" data-home-path="index.html">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-<nav>
-    <div class="logo">Adovasio Tools</div>
-    <ul>
-        <li><a href="ip.html">IP</a></li>
-        <li><a href="dns.html">DNS</a></li>
-        <li><a href="ping.html">Ping</a></li>
-        <li><a href="http.html">HTTP</a></li>
-        <li><a href="port.html" class="active">Port</a></li>
-    </ul>
-</nav>
-
-<div class="container">
-    <div class="card">
-        <h1>Port Check</h1>
-        <p class="subtitle">
-            Tests TCP connectivity from the server to a specific port.
-        </p>
-
-        <div class="input-group">
-            <input type="text" id="hostInput" placeholder="example.com" autocomplete="off">
-            <input type="number" id="portInput" placeholder="443" min="1" max="65535">
-            <button id="testBtn">Test</button>
+    <header class="site-header" data-site-header>
+        <div class="site-header__inner shell">
+            <a class="brand" href="index.html" aria-label="Adovasio Tools home">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
+                </span>
+                <span class="brand__copy"><strong>Adovasio</strong><span>Tools</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation" data-nav-toggle>
+                <span aria-hidden="true"></span>
+            </button>
+            <div class="nav-panel" id="site-menu" data-nav-panel>
+                <nav class="site-nav" aria-label="Primary navigation">
+                    <a class="site-nav__link" href="index.html">Tools home</a>
+                    <span class="site-nav__categories" data-category-navigation>
+                        <a class="site-nav__link" href="index.html#file-document">File &amp; Document</a>
+                        <a class="site-nav__link is-active" href="index.html#network-server" aria-current="location">Network Tools</a>
+                    </span>
+                    <a class="site-nav__company" href="https://adovasio.com">
+                        Adovasio Technology
+                        <svg aria-hidden="true" focusable="false"><use href="assets/icons/tools.svg#arrow-up-right"></use></svg>
+                    </a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <div id="status" class="status idle">
-            Enter a host and port, then click Test.
+    <main class="tool-main" id="main-content">
+        <div class="shell">
+            <a class="tool-breadcrumb" href="index.html#network-server">
+                <svg aria-hidden="true" focusable="false"><use href="assets/icons/tools.svg#arrow-right"></use></svg>
+                Network &amp; Server Tools
+            </a>
+
+            <div class="tool-layout">
+                <section class="diagnostic-card" aria-labelledby="tool-title">
+                    <header class="tool-heading">
+                        <span class="tool-heading__icon" aria-hidden="true">
+                            <svg focusable="false"><use href="assets/icons/tools.svg#port-check"></use></svg>
+                        </span>
+                        <div>
+                            <h1 id="tool-title">Port Check</h1>
+                            <p class="subtitle">Test TCP connectivity from the Adovasio server to a public host and port.</p>
+                        </div>
+                    </header>
+
+                    <div class="tool-interface">
+                        <div class="input-group">
+                            <div class="field">
+                                <label for="hostInput">Public host</label>
+                                <input type="text" id="hostInput" placeholder="example.com" autocomplete="off" autocapitalize="none" spellcheck="false">
+                            </div>
+                            <div class="field field--port">
+                                <label for="portInput">Port</label>
+                                <input type="number" id="portInput" placeholder="443" min="1" max="65535" inputmode="numeric">
+                            </div>
+                            <button class="tool-button" id="testBtn" type="button">Check port</button>
+                        </div>
+                        <div class="status idle" id="status" role="status" aria-live="polite">
+                            Enter a public host and port, then select Check port.
+                        </div>
+                        <div class="result hidden" id="resultBox" role="region" aria-label="Port check result" tabindex="0"></div>
+                    </div>
+                </section>
+
+                <aside class="tool-guide" aria-labelledby="guide-title">
+                    <span class="tool-guide__label">About this check</span>
+                    <h2 id="guide-title">Test a public TCP service.</h2>
+                    <p>A port is a numbered connection point used by services such as HTTPS, mail, and remote access.</p>
+                    <p>This check attempts a TCP connection from the Adovasio server. Firewalls and access rules can affect the result.</p>
+                    <a class="tool-guide__back" href="index.html#network-server">
+                        Browse all network tools
+                        <svg aria-hidden="true" focusable="false"><use href="assets/icons/tools.svg#arrow-right"></use></svg>
+                    </a>
+                </aside>
+            </div>
         </div>
+    </main>
 
-        <div id="resultBox" class="result hidden"></div>
-    </div>
-</div>
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="site-footer__grid">
+                <div class="site-footer__brand">
+                    <a class="brand brand--footer" href="index.html" aria-label="Adovasio Tools home">
+                        <span class="brand__mark" aria-hidden="true">
+                            <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
+                        </span>
+                        <span class="brand__copy"><strong>Adovasio</strong><span>Tools</span></span>
+                    </a>
+                    <p>Practical web utilities from Adovasio Technology LLC.</p>
+                </div>
+                <div class="site-footer__column">
+                    <h2>Categories</h2>
+                    <nav aria-label="Tool categories" data-footer-categories>
+                        <a href="index.html#file-document">File &amp; Document</a>
+                        <a href="index.html#network-server">Network Tools</a>
+                    </nav>
+                </div>
+                <div class="site-footer__column">
+                    <h2>Adovasio</h2>
+                    <nav aria-label="Company links">
+                        <a href="https://adovasio.com">Adovasio Technology LLC</a>
+                        <a href="https://adovasio.com/contact.html">Get in touch</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="site-footer__legal">
+                <p>Adovasio Tools is a service of Adovasio Technology LLC.</p>
+                <p>&copy; <span data-current-year>2026</span> Adovasio Technology LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-<div class="footer">
-    © 2026 Adovasio Technology LLC - <a href="https://adovasio.com" target="_blank" rel="noopener">https://adovasio.com</a>
-</div>
-
-<script src="assets/js/port.js"></script>
+    <script defer src="assets/js/site.js"></script>
+    <script src="assets/js/port.js"></script>
 </body>
 </html>

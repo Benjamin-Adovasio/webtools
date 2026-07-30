@@ -18,16 +18,23 @@ function hideResult() {
     resultBox.textContent = "";
 }
 
-checkBtn.addEventListener("click", async () => {
+function setBusy(isBusy) {
+    checkBtn.disabled = isBusy;
+    statusEl.setAttribute("aria-busy", String(isBusy));
+}
+
+async function checkHttp() {
     const url = urlInput.value.trim();
+
+    hideResult();
 
     if (!url) {
         setStatus("Please enter a URL.", "error");
         return;
     }
 
+    setBusy(true);
     setStatus("Checking HTTP response...", "loading");
-    hideResult();
 
     try {
         const response = await fetch("/api/http", {
@@ -57,5 +64,15 @@ checkBtn.addEventListener("click", async () => {
     } catch (error) {
         showResult(error.toString());
         setStatus("HTTP check failed.", "error");
+    } finally {
+        setBusy(false);
+    }
+}
+
+checkBtn.addEventListener("click", checkHttp);
+urlInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        checkBtn.click();
     }
 });

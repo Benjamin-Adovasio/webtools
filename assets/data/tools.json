@@ -1,0 +1,120 @@
+{
+  "categories": [
+    {
+      "id": "file-document",
+      "name": "File & Document",
+      "navLabel": "File & Document",
+      "eyebrow": "Featured tools",
+      "description": "Focused workspaces for converting, organizing, and working with everyday files.",
+      "order": 10
+    },
+    {
+      "id": "network-server",
+      "name": "Network & Server Tools",
+      "navLabel": "Network Tools",
+      "eyebrow": "Network utilities",
+      "description": "Straightforward checks for public network, DNS, and server information.",
+      "order": 20
+    }
+  ],
+  "tools": [
+    {
+      "id": "file-converter",
+      "name": "File Converter",
+      "description": "Convert documents, images, media, archives, and other common file formats in one focused workspace.",
+      "category": "file-document",
+      "url": "https://convert.adovasio.com",
+      "icon": "file-converter",
+      "linkType": "external",
+      "featured": true,
+      "status": "available",
+      "accent": "violet",
+      "ctaLabel": "Open File Converter",
+      "order": 10
+    },
+    {
+      "id": "pdf-tools",
+      "name": "PDF Tools",
+      "description": "Work with PDFs in a dedicated toolkit built for common document tasks.",
+      "category": "file-document",
+      "url": "https://pdf.adovasio.com",
+      "icon": "pdf-tools",
+      "linkType": "external",
+      "featured": true,
+      "status": "available",
+      "accent": "cyan",
+      "ctaLabel": "Open PDF Tools",
+      "order": 20
+    },
+    {
+      "id": "public-ip",
+      "name": "Public IP",
+      "description": "See the public IP address and request details visible to this service.",
+      "category": "network-server",
+      "url": "ip.html",
+      "icon": "public-ip",
+      "linkType": "internal",
+      "featured": false,
+      "status": "available",
+      "accent": "blue",
+      "ctaLabel": "Check your IP",
+      "order": 10
+    },
+    {
+      "id": "dns-lookup",
+      "name": "DNS Lookup",
+      "description": "Look up public DNS records for a domain from the Adovasio server.",
+      "category": "network-server",
+      "url": "dns.html",
+      "icon": "dns-lookup",
+      "linkType": "internal",
+      "featured": false,
+      "status": "available",
+      "accent": "indigo",
+      "ctaLabel": "Look up DNS",
+      "order": 20
+    },
+    {
+      "id": "ping",
+      "name": "Ping",
+      "description": "Send a short server-side ping to see whether a public host responds.",
+      "category": "network-server",
+      "url": "ping.html",
+      "icon": "ping",
+      "linkType": "internal",
+      "featured": false,
+      "status": "available",
+      "accent": "teal",
+      "ctaLabel": "Run a ping",
+      "order": 30
+    },
+    {
+      "id": "http-test",
+      "name": "HTTP Test",
+      "description": "Inspect the status, response time, and content type returned by a URL.",
+      "category": "network-server",
+      "url": "http.html",
+      "icon": "http-test",
+      "linkType": "internal",
+      "featured": false,
+      "status": "available",
+      "accent": "amber",
+      "ctaLabel": "Test a URL",
+      "order": 40
+    },
+    {
+      "id": "port-check",
+      "name": "Port Check",
+      "description": "Test TCP connectivity to a public host and port from the Adovasio server.",
+      "category": "network-server",
+      "url": "port.html",
+      "icon": "port-check",
+      "linkType": "internal",
+      "featured": false,
+      "status": "available",
+      "accent": "rose",
+      "ctaLabel": "Check a port",
+      "order": 50
+    }
+  ]
+}

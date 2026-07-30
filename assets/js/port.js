@@ -19,9 +19,16 @@ function hideResult() {
     resultBox.textContent = "";
 }
 
-testBtn.addEventListener("click", async () => {
+function setBusy(isBusy) {
+    testBtn.disabled = isBusy;
+    statusEl.setAttribute("aria-busy", String(isBusy));
+}
+
+async function checkPort() {
     const host = hostInput.value.trim();
     const port = parseInt(portInput.value, 10);
+
+    hideResult();
 
     if (!host) {
         setStatus("Please enter a host.", "error");
@@ -33,8 +40,8 @@ testBtn.addEventListener("click", async () => {
         return;
     }
 
+    setBusy(true);
     setStatus("Testing port connectivity...", "loading");
-    hideResult();
 
     try {
         const response = await fetch("/api/port", {
@@ -65,5 +72,17 @@ testBtn.addEventListener("click", async () => {
     } catch (error) {
         showResult(error.toString());
         setStatus("Port test failed.", "error");
+    } finally {
+        setBusy(false);
     }
+}
+
+testBtn.addEventListener("click", checkPort);
+[hostInput, portInput].forEach((input) => {
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            testBtn.click();
+        }
+    });
 });

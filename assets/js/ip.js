@@ -7,7 +7,13 @@ function setStatus(message, type) {
     statusEl.className = "status " + type;
 }
 
-checkBtn.addEventListener("click", async () => {
+function setBusy(isBusy) {
+    checkBtn.disabled = isBusy;
+    statusEl.setAttribute("aria-busy", String(isBusy));
+}
+
+async function checkIp() {
+    setBusy(true);
     setStatus("Contacting API...", "loading");
     resultBox.classList.add("hidden");
     resultBox.textContent = "";
@@ -31,5 +37,9 @@ checkBtn.addEventListener("click", async () => {
         setStatus("Failed to contact API. Backend not running?", "error");
         resultBox.textContent = error.toString();
         resultBox.classList.remove("hidden");
+    } finally {
+        setBusy(false);
     }
-});
+}
+
+checkBtn.addEventListener("click", checkIp);

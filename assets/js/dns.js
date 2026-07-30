@@ -19,17 +19,24 @@ function hideResult() {
     resultBox.textContent = "";
 }
 
-lookupBtn.addEventListener("click", async () => {
+function setBusy(isBusy) {
+    lookupBtn.disabled = isBusy;
+    statusEl.setAttribute("aria-busy", String(isBusy));
+}
+
+async function lookupDns() {
     const domain = domainInput.value.trim();
     const type = recordType.value;
+
+    hideResult();
 
     if (!domain) {
         setStatus("Please enter a domain.", "error");
         return;
     }
 
+    setBusy(true);
     setStatus("Querying DNS...", "loading");
-    hideResult();
 
     try {
         const response = await fetch("/api/dns", {
@@ -55,5 +62,15 @@ lookupBtn.addEventListener("click", async () => {
     } catch (error) {
         showResult(error.toString());
         setStatus("DNS lookup failed.", "error");
+    } finally {
+        setBusy(false);
+    }
+}
+
+lookupBtn.addEventListener("click", lookupDns);
+domainInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        lookupBtn.click();
     }
 });

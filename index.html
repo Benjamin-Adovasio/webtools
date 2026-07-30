@@ -1,35 +1,202 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Adovasio Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adovasio Tools | Practical Web Utilities</title>
+    <meta name="description" content="A focused collection of practical file, document, network, and server utilities from Adovasio Technology LLC.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#05080c">
+    <link rel="canonical" href="https://tools.adovasio.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Adovasio Tools">
+    <meta property="og:title" content="Useful tools. No unnecessary complexity.">
+    <meta property="og:description" content="Practical web utilities from Adovasio Technology LLC.">
+    <meta property="og:url" content="https://tools.adovasio.com/">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
 </head>
-<body>
+<body class="page-home" data-page="home" data-home-path="index.html">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-<nav>
-    <div class="logo">Adovasio Tools</div>
-    <ul>
-        <li><a href="ip.html">IP</a></li>
-        <li><a href="dns.html">DNS</a></li>
-        <li><a href="ping.html">Ping</a></li>
-        <li><a href="http.html">HTTP</a></li>
-        <li><a href="port.html">Port</a></li>
-    </ul>
-</nav>
+    <header class="site-header" data-site-header>
+        <div class="site-header__inner shell">
+            <a class="brand" href="index.html" aria-label="Adovasio Tools home" aria-current="page">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
+                </span>
+                <span class="brand__copy">
+                    <strong>Adovasio</strong>
+                    <span>Tools</span>
+                </span>
+            </a>
 
-<div class="container">
-    <div class="card">
-        <h1>Network & Server Diagnostics</h1>
-        <p style="color: var(--text-secondary); line-height:1.6;">
-            Web tools for testing connectivity, DNS resolution, HTTP response behavior, and public IP visibility.
-        </p>
-    </div>
-</div>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation" data-nav-toggle>
+                <span aria-hidden="true"></span>
+            </button>
 
-<div class="footer">
-    © 2026 Adovasio Technology LLC - <a href="https://adovasio.com" target="_blank" rel="noopener">https://adovasio.com</a>
-</div>
+            <div class="nav-panel" id="site-menu" data-nav-panel>
+                <nav class="site-nav" aria-label="Primary navigation">
+                    <a class="site-nav__link is-active" href="index.html" aria-current="page">Tools home</a>
+                    <span class="site-nav__categories" data-category-navigation>
+                        <a class="site-nav__link" href="index.html#file-document">File &amp; Document</a>
+                        <a class="site-nav__link" href="index.html#network-server">Network Tools</a>
+                    </span>
+                    <a class="site-nav__company" href="https://adovasio.com">
+                        Adovasio Technology
+                        <svg aria-hidden="true" focusable="false"><use href="assets/icons/tools.svg#arrow-up-right"></use></svg>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
+    <main id="main-content">
+        <section class="portal-hero" aria-labelledby="hero-title">
+            <div class="portal-hero__grid" aria-hidden="true"></div>
+            <div class="portal-hero__glow portal-hero__glow--one" aria-hidden="true"></div>
+            <div class="portal-hero__glow portal-hero__glow--two" aria-hidden="true"></div>
+
+            <div class="portal-hero__inner shell">
+                <div class="portal-hero__copy">
+                    <p class="hero-kicker" data-reveal>
+                        <span aria-hidden="true"></span>
+                        A service of Adovasio Technology LLC
+                    </p>
+                    <h1 id="hero-title" data-reveal>
+                        <span>Adovasio Tools</span>
+                        <span class="portal-hero__accent">Useful by design.</span>
+                    </h1>
+                    <p class="portal-hero__lead" data-reveal>
+                        Practical, privacy-conscious web utilities with clear interfaces and no unnecessary complexity.
+                    </p>
+                    <div class="portal-hero__actions" data-reveal>
+                        <a class="button button--primary" href="#tools">Explore the tools</a>
+                        <a class="arrow-link" href="https://adovasio.com">
+                            Visit Adovasio Technology
+                            <svg aria-hidden="true" focusable="false"><use href="assets/icons/tools.svg#arrow-up-right"></use></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portal-hero__signal" aria-hidden="true" data-reveal>
+                    <div class="signal-orbit signal-orbit--outer"></div>
+                    <div class="signal-orbit signal-orbit--inner"></div>
+                    <div class="signal-core">
+                        <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
+                    </div>
+                    <span class="signal-node signal-node--files">
+                        <svg focusable="false"><use href="assets/icons/tools.svg#file-converter"></use></svg>
+                    </span>
+                    <span class="signal-node signal-node--pdf">
+                        <svg focusable="false"><use href="assets/icons/tools.svg#pdf-tools"></use></svg>
+                    </span>
+                    <span class="signal-node signal-node--network">
+                        <svg focusable="false"><use href="assets/icons/tools.svg#ping"></use></svg>
+                    </span>
+                    <span class="signal-label signal-label--files">File &amp; document</span>
+                    <span class="signal-label signal-label--network">Network &amp; server</span>
+                </div>
+            </div>
+
+            <a class="hero-scroll" href="#tools" aria-label="Scroll to the tool directory">
+                <span>Explore</span>
+                <i aria-hidden="true"></i>
+            </a>
+        </section>
+
+        <section class="tool-directory" id="tools" aria-labelledby="directory-title">
+            <div class="shell">
+                <header class="directory-heading" data-reveal>
+                    <p class="eyebrow">Tool directory</p>
+                    <h2 id="directory-title">Everything in one place.</h2>
+                    <p>Choose a workspace or open a focused utility. The directory is designed to grow as new Adovasio tools become available.</p>
+                </header>
+
+                <div class="catalog" data-tool-catalog>
+                    <div class="catalog-loading" role="status">
+                        <span aria-hidden="true"></span>
+                        Loading tools
+                    </div>
+                </div>
+
+                <noscript>
+                    <p class="catalog-message">
+                        JavaScript is required for the visual directory.
+                        <a href="assets/data/tools.json">View the tool catalog data.</a>
+                    </p>
+                </noscript>
+            </div>
+        </section>
+
+        <section class="portal-principles" aria-labelledby="principles-title">
+            <div class="shell">
+                <div class="principles-heading" data-reveal>
+                    <p class="eyebrow">Made for real use</p>
+                    <h2 id="principles-title">The tool should never be the hard part.</h2>
+                </div>
+
+                <div class="principles-grid">
+                    <article data-reveal>
+                        <span>01</span>
+                        <h3>Focused</h3>
+                        <p>Each utility is designed around a clear job, without crowded interfaces or distracting extras.</p>
+                    </article>
+                    <article data-reveal>
+                        <span>02</span>
+                        <h3>Direct</h3>
+                        <p>Open the tool you need and get to work. No portal maze and no unnecessary detours.</p>
+                    </article>
+                    <article data-reveal>
+                        <span>03</span>
+                        <h3>Thoughtful</h3>
+                        <p>Responsive, accessible experiences built with the same care as every Adovasio service.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="site-footer__grid">
+                <div class="site-footer__brand">
+                    <a class="brand brand--footer" href="index.html" aria-label="Adovasio Tools home">
+                        <span class="brand__mark" aria-hidden="true">
+                            <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
+                        </span>
+                        <span class="brand__copy">
+                            <strong>Adovasio</strong>
+                            <span>Tools</span>
+                        </span>
+                    </a>
+                    <p>Practical web utilities from Adovasio Technology LLC.</p>
+                </div>
+
+                <div class="site-footer__column">
+                    <h2>Categories</h2>
+                    <nav aria-label="Tool categories" data-footer-categories>
+                        <a href="index.html#file-document">File &amp; Document</a>
+                        <a href="index.html#network-server">Network Tools</a>
+                    </nav>
+                </div>
+
+                <div class="site-footer__column">
+                    <h2>Adovasio</h2>
+                    <nav aria-label="Company links">
+                        <a href="https://adovasio.com">Adovasio Technology LLC</a>
+                        <a href="https://adovasio.com/contact.html">Get in touch</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="site-footer__legal">
+                <p>Adovasio Tools is a service of Adovasio Technology LLC.</p>
+                <p>&copy; <span data-current-year>2026</span> Adovasio Technology LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="assets/js/site.js"></script>
 </body>
 </html>
