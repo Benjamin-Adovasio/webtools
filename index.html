@@ -14,6 +14,7 @@
     <meta property="og:description" content="Practical web utilities from Adovasio Technology LLC.">
     <meta property="og:url" content="https://tools.adovasio.com/">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <script>document.documentElement.classList.replace("no-js", "js");</script>
 </head>
 <body class="page-home" data-page="home" data-home-path="index.html">
@@ -157,46 +158,18 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="shell">
-            <div class="site-footer__grid">
-                <div class="site-footer__brand">
-                    <a class="brand brand--footer" href="index.html" aria-label="Adovasio Tools home">
-                        <span class="brand__mark" aria-hidden="true">
-                            <svg focusable="false"><use href="assets/icons/tools.svg#brand-mark"></use></svg>
-                        </span>
-                        <span class="brand__copy">
-                            <strong>Adovasio</strong>
-                            <span>Tools</span>
-                        </span>
-                    </a>
-                    <p>Practical web utilities from Adovasio Technology LLC.</p>
-                </div>
-
-                <div class="site-footer__column">
-                    <h2>Categories</h2>
-                    <nav aria-label="Tool categories" data-footer-categories>
-                        <a href="index.html#file-document">File &amp; Document</a>
-                        <a href="index.html#network-server">Network Tools</a>
-                    </nav>
-                </div>
-
-                <div class="site-footer__column">
-                    <h2>Adovasio</h2>
-                    <nav aria-label="Company links">
-                        <a href="https://adovasio.com">Adovasio Technology LLC</a>
-                        <a href="https://adovasio.com/contact.html">Get in touch</a>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="site-footer__legal">
-                <p>Adovasio Tools is a service of Adovasio Technology LLC.</p>
-                <p>&copy; <span data-current-year>2026</span> Adovasio Technology LLC. All rights reserved.</p>
-            </div>
+    <footer class="site-footer" id="site-footer" data-site-footer>
+        <div class="site-footer__fallback">
+            <a class="site-footer__fallback-brand" href="https://adovasio.com/">
+                Adovasio Technology LLC
+            </a>
+            <a class="site-footer__fallback-link" href="https://adovasio.com/contact.html">
+                Get Started
+            </a>
         </div>
     </footer>
 
     <script defer src="assets/js/site.js"></script>
+    <script defer src="assets/js/footer.js"></script>
 </body>
 </html>
