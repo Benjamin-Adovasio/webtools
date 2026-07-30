@@ -255,6 +255,14 @@
 }
 
 .site-footer[data-site-footer] .mega-footer__client-login-arrow {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
     transition: transform 220ms var(--ease);
 }
 

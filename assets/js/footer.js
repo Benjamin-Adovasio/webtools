@@ -465,7 +465,9 @@
           <path d="M7 8.5V6.8a3 3 0 0 1 6 0v1.7"></path>
         </svg>
         <span>${escapeHtml(action)}</span>
-        <span class="mega-footer__client-login-arrow" aria-hidden="true">&#8599;</span>
+        <svg class="mega-footer__client-login-arrow" aria-hidden="true" viewBox="0 0 20 20" focusable="false">
+          <path d="M5 15 15 5M7 5h8v8"></path>
+        </svg>
         ${renderExternalNote(destination)}
       </a>
     `;
@@ -476,7 +478,9 @@
       root.innerHTML = `
         <a class="mega-footer__client-login" href="${MAIN_SITE_ORIGIN}/contact.html">
           <span>Client Access</span>
-          <span class="mega-footer__client-login-arrow" aria-hidden="true">&#8599;</span>
+          <svg class="mega-footer__client-login-arrow" aria-hidden="true" viewBox="0 0 20 20" focusable="false">
+            <path d="M5 15 15 5M7 5h8v8"></path>
+          </svg>
         </a>
       `;
       return;

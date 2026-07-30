@@ -83,6 +83,13 @@ for (const pagePath of htmlPages) {
     );
     assert(!/<iframe\b/i.test(html), `${pagePath} must not contain an iframe.`);
 
+    for (const match of matchAll(html, /<svg\b([^>]*)>\s*<use\b/g)) {
+        assert(
+            /\bviewBox="[^"]+"/.test(match[1]),
+            `${pagePath} contains a sprite icon without an explicit viewBox.`
+        );
+    }
+
     for (const match of matchAll(html, /<(?:input|select)\b[^>]*\sid="([^"]+)"[^>]*>/g)) {
         assert(
             html.includes(`for="${match[1]}"`),
@@ -105,6 +112,12 @@ for (const pagePath of htmlPages) {
         assert(existsSync(resolve(root, localPath)), `${pagePath} references missing file "${localPath}".`);
     }
 }
+
+const homeHtml = read("index.html");
+assert(
+    !/Made for real use|Everything in one place/i.test(homeHtml),
+    "The homepage must not restore the removed promotional sections."
+);
 
 const pageContracts = [
     {
@@ -376,7 +389,9 @@ assert(
 );
 assert(
     clientSurface.innerHTML.includes("https://sso.adovasio.com") &&
-        clientSurface.innerHTML.includes("Client Login"),
+        clientSurface.innerHTML.includes("Client Login") &&
+        clientSurface.innerHTML.includes('class="mega-footer__client-login-arrow"') &&
+        !clientSurface.innerHTML.includes("&#8599;"),
     "The footer client CTA must resolve to Adovasio SSO."
 );
 assert(

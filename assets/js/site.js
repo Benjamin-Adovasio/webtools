@@ -102,6 +102,7 @@
         const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
 
         svg.setAttribute("class", className);
+        svg.setAttribute("viewBox", safeIcon.startsWith("arrow-") ? "0 0 24 24" : "0 0 48 48");
         svg.setAttribute("aria-hidden", "true");
         svg.setAttribute("focusable", "false");
         use.setAttribute("href", `${iconSprite}#${safeIcon}`);
