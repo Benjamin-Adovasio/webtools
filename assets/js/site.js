@@ -266,7 +266,7 @@
         schema.textContent = JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "Adovasio Tools directory",
+            name: "Free Tools from Adovasio directory",
             itemListElement: tools.map((tool, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
