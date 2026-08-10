@@ -11,6 +11,16 @@ const htmlPages = [
     "http.html",
     "port.html"
 ];
+const sharedFooterHeadInclude = '<!--#include virtual="/_adovasio-shared/footer/head.html" -->';
+const sharedFooterBodyInclude = '<!--#include virtual="/_adovasio-shared/footer/footer.html" -->';
+const duplicatedFooterFiles = [
+    "assets/css/footer.css",
+    "assets/js/footer.js",
+    "assets/data/footer/projects.json",
+    "assets/data/footer/technologies.json",
+    "assets/images/footer/adovasio-footer-mark-96.webp",
+    "assets/fonts/manrope-latin-400-800.woff2"
+];
 
 function assert(condition, message) {
     if (!condition) {
@@ -68,19 +78,19 @@ for (const pagePath of htmlPages) {
     assert(/name="description"/.test(html), `${pagePath} is missing a meta description.`);
     assert(/rel="canonical"/.test(html), `${pagePath} is missing a canonical URL.`);
     assert(/<main\b/.test(html), `${pagePath} is missing a main landmark.`);
-    assert(/<footer\b/.test(html), `${pagePath} is missing a footer landmark.`);
     assert(
-        html.includes('id="site-footer" data-site-footer'),
-        `${pagePath} is missing the shared Adovasio footer mount.`
+        html.split(sharedFooterHeadInclude).length === 2,
+        `${pagePath} must include the canonical footer head exactly once.`
     );
     assert(
-        html.includes('href="assets/css/footer.css"'),
-        `${pagePath} is missing the scoped footer stylesheet.`
+        html.split(sharedFooterBodyInclude).length === 2,
+        `${pagePath} must include the canonical footer body exactly once.`
     );
     assert(
-        html.includes('src="assets/js/footer.js"'),
-        `${pagePath} is missing the dynamic footer renderer.`
+        !/<footer\b/i.test(html),
+        `${pagePath} must not duplicate the canonical footer markup.`
     );
+    assert(!/assets\/(?:css|js)\/footer\.(?:css|js)/i.test(html), `${pagePath} references a copied footer asset.`);
     assert(!/<iframe\b/i.test(html), `${pagePath} must not contain an iframe.`);
 
     for (const match of matchAll(html, /<svg\b([^>]*)>\s*<use\b/g)) {
@@ -258,172 +268,18 @@ for (const contract of pageContracts) {
     assert(elements[contract.button].disabled === false, `${contract.script} left its button disabled.`);
 }
 
-const footerCss = read("assets/css/footer.css");
-const footerSource = read("assets/js/footer.js");
-const footerData = JSON.parse(read("assets/data/footer/projects.json"));
-const footerTechnologies = JSON.parse(read("assets/data/footer/technologies.json"));
+const siteCss = read("assets/css/style.css");
 
-assert(
-    footerCss.includes('font-family: "Adovasio Footer Manrope"'),
-    "The footer must use its isolated Manrope family."
-);
-assert(!footerCss.includes(":root"), "Footer CSS must not override Tools root variables.");
-assert(!footerCss.includes("body::"), "Footer CSS must not add global body effects.");
-assert(
-    footerCss.includes("@media (prefers-reduced-motion: reduce)"),
-    "Footer CSS must preserve reduced-motion behavior."
-);
-assert(
-    footerSource.includes('const MAIN_SITE_ORIGIN = "https://adovasio.com"'),
-    "The footer renderer must use absolute main-site links."
-);
-assert(
-    !footerSource.includes('fetch("https://adovasio.com'),
-    "Footer project data must remain local to avoid cross-origin failures."
-);
-assert(
-    Array.isArray(footerData.projects) && footerData.projects.length > 0,
-    "The footer project snapshot must contain projects."
-);
-assert(
-    footerTechnologies.technologies?.ios,
-    "The footer technology snapshot must preserve iOS grouping data."
-);
+assert(siteCss.includes(".tool-card__footer"), "Tool-card footer styling must be preserved.");
+assert(!siteCss.includes(".site-footer"), "Site footer styling must come from the canonical shared module.");
+assert(!siteCss.includes(".brand--footer"), "Copied footer brand styling must not remain local.");
 
-function createFooterSurface(projectsSurface, footerProjectGroup = "", projectLimit = "") {
-    return {
-        dataset: {
-            projectsSurface,
-            footerProjectGroup,
-            projectLimit
-        },
-        innerHTML: "",
-        attributes: new Map([["aria-busy", "true"]]),
-        setAttribute(name, value) {
-            this.attributes.set(name, String(value));
-        }
-    };
+for (const relativePath of duplicatedFooterFiles) {
+    assert(!existsSync(resolve(root, relativePath)), `Copied footer file must be removed: ${relativePath}.`);
 }
-
-const footerSurfaces = [
-    createFooterSurface("footer-client", "", "1"),
-    createFooterSurface("footer-projects", "tools"),
-    createFooterSurface("footer-projects", "ios"),
-    createFooterSurface("footer-projects", "systems")
-];
-const revealNodes = Array.from({ length: 5 }, () => {
-    const classes = new Set();
-    return {
-        classList: {
-            add(name) {
-                classes.add(name);
-            },
-            contains(name) {
-                return classes.has(name);
-            }
-        }
-    };
-});
-const footerClasses = new Set(["site-footer"]);
-const footerRoot = {
-    innerHTML: "",
-    classList: {
-        add(name) {
-            footerClasses.add(name);
-        }
-    },
-    removeAttribute() {},
-    querySelectorAll(selector) {
-        if (selector === "[data-reveal]") {
-            return revealNodes;
-        }
-        if (selector === "[data-projects-surface]") {
-            return footerSurfaces;
-        }
-        return [];
-    }
-};
-const requestedFooterData = [];
-const footerContext = {
-    document: {
-        readyState: "complete",
-        body: { dataset: { page: "home" } },
-        querySelectorAll(selector) {
-            return selector === "[data-site-footer]" ? [footerRoot] : [];
-        }
-    },
-    window: {
-        location: {
-            origin: "https://tools.adovasio.com",
-            pathname: "/index.html"
-        }
-    },
-    fetch: async (url) => {
-        requestedFooterData.push(url);
-        const localPath = String(url).replace(/^\//, "");
-        return {
-            ok: true,
-            json: async () => JSON.parse(read(localPath))
-        };
-    },
-    console
-};
-
-vm.runInNewContext(footerSource, footerContext, { filename: "assets/js/footer.js" });
-await new Promise((resolvePromise) => setImmediate(resolvePromise));
-
-const [clientSurface, toolsSurface, iosSurface, systemsSurface] = footerSurfaces;
-assert(footerClasses.has("site-footer--mega"), "The footer renderer did not activate mega-footer styling.");
-assert(
-    footerRoot.innerHTML.includes('href="https://adovasio.com/business.html"'),
-    "Explore links must resolve to the main Adovasio site."
-);
-assert(
-    footerRoot.innerHTML.includes('src="/assets/images/footer/adovasio-footer-mark-96.webp"'),
-    "The footer must use the ported branding asset."
-);
-assert(
-    requestedFooterData.join(" ").includes("/assets/data/footer/projects.json") &&
-        requestedFooterData.join(" ").includes("/assets/data/footer/technologies.json"),
-    "The footer renderer did not request both local data snapshots."
-);
-assert(
-    clientSurface.innerHTML.includes("https://sso.adovasio.com") &&
-        clientSurface.innerHTML.includes("Client Login") &&
-        clientSurface.innerHTML.includes('class="mega-footer__client-login-arrow"') &&
-        !clientSurface.innerHTML.includes("&#8599;"),
-    "The footer client CTA must resolve to Adovasio SSO."
-);
-assert(
-    toolsSurface.innerHTML.includes("https://tools.adovasio.com") &&
-        toolsSurface.innerHTML.includes("https://convert.adovasio.com") &&
-        toolsSurface.innerHTML.includes("https://pdf.adovasio.com"),
-    "The footer tools group is missing required Adovasio applications."
-);
-assert(
-    iosSurface.innerHTML.includes("Georgie AI") &&
-        iosSurface.innerHTML.includes("Guardian Campus Safety"),
-    "The footer iOS group was not rendered from project data."
-);
-assert(
-    systemsSurface.innerHTML.includes("Adovasio VPN") &&
-        systemsSurface.innerHTML.includes("Adovasio Cloud") &&
-        systemsSurface.innerHTML.includes("Adovasio Index"),
-    "The footer systems group was not rendered from project data."
-);
-for (const surface of footerSurfaces) {
-    assert(
-        surface.attributes.get("aria-busy") === "false",
-        `${surface.dataset.footerProjectGroup || surface.dataset.projectsSurface} stayed busy.`
-    );
-}
-assert(
-    revealNodes.every((node) => node.classList.contains("is-visible")),
-    "Injected footer content must become visible."
-);
 
 console.log(
     `Verified ${htmlPages.length} pages, ${catalog.categories.length} categories, ` +
     `${catalog.tools.length} catalog entries, ${pageContracts.length} tool controllers, ` +
-    "and the shared dynamic footer."
+    "and the canonical SSI footer contract."
 );

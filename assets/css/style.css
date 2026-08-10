@@ -1331,74 +1331,6 @@ select:focus {
     transform: translateX(4px);
 }
 
-/* Footer */
-
-.site-footer {
-    padding-block: 78px 28px;
-    border-top: 1px solid var(--line);
-    background: #04070a;
-}
-
-.site-footer__grid {
-    display: grid;
-    grid-template-columns: minmax(260px, 1.4fr) repeat(2, minmax(150px, 0.6fr));
-    gap: 50px;
-    padding-bottom: 64px;
-}
-
-.brand--footer .brand__mark {
-    width: 42px;
-    height: 42px;
-}
-
-.site-footer__brand > p {
-    max-width: 360px;
-    margin: 22px 0 0;
-    color: var(--muted);
-    font-size: 0.85rem;
-}
-
-.site-footer__column h2 {
-    margin: 4px 0 19px;
-    color: var(--text-soft);
-    font-size: 0.69rem;
-    font-weight: 800;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-}
-
-.site-footer__column nav {
-    display: grid;
-    justify-items: start;
-    gap: 10px;
-}
-
-.site-footer__column a {
-    min-height: 30px;
-    color: var(--muted);
-    font-size: 0.82rem;
-    text-decoration: none;
-    transition: color 160ms ease;
-}
-
-.site-footer__column a:hover {
-    color: #ffffff;
-}
-
-.site-footer__legal {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    color: #6f7b8b;
-    font-size: 0.68rem;
-}
-
-.site-footer__legal p {
-    margin: 0;
-}
-
 /* Progressive reveal */
 
 .reveal-ready [data-reveal] {
@@ -1596,10 +1528,6 @@ select:focus {
         min-height: 410px;
     }
 
-    .site-footer__grid {
-        grid-template-columns: 1.3fr 0.7fr 0.7fr;
-        gap: 28px;
-    }
 }
 
 @media (max-width: 620px) {
@@ -1730,24 +1658,6 @@ select:focus {
         padding: 28px;
     }
 
-    .site-footer {
-        padding-top: 62px;
-    }
-
-    .site-footer__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 42px 24px;
-    }
-
-    .site-footer__brand {
-        grid-column: 1 / -1;
-    }
-
-    .site-footer__legal {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-    }
 }
 
 @media (max-width: 390px) {
@@ -1759,13 +1669,6 @@ select:focus {
         transform: scale(0.92);
     }
 
-    .site-footer__grid {
-        grid-template-columns: 1fr;
-    }
-
-    .site-footer__brand {
-        grid-column: auto;
-    }
 }
 
 @media (prefers-reduced-motion: reduce) {

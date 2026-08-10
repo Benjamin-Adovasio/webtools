@@ -9,7 +9,6 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const catalogMount = document.querySelector("[data-tool-catalog]");
     const categoryNavMounts = document.querySelectorAll("[data-category-navigation]");
-    const footerCategoryMounts = document.querySelectorAll("[data-footer-categories]");
     const iconSprite = "assets/icons/tools.svg";
     let revealObserver = null;
 
@@ -64,10 +63,6 @@
         updateHeader();
     }
 
-    document.querySelectorAll("[data-current-year]").forEach((element) => {
-        element.textContent = String(new Date().getFullYear());
-    });
-
     function registerReveals(scope = document) {
         const elements = scope.querySelectorAll("[data-reveal]:not(.is-visible)");
 
@@ -111,19 +106,16 @@
         return svg;
     }
 
-    function createCategoryLink(category, footer = false) {
+    function createCategoryLink(category) {
         const link = document.createElement("a");
         const homePath = document.body.dataset.homePath || "index.html";
 
         link.href = `${homePath}#${category.id}`;
         link.textContent = category.navLabel || category.name;
-
-        if (!footer) {
-            link.className = "site-nav__link";
-            if (document.body.dataset.category === category.id) {
-                link.classList.add("is-active");
-                link.setAttribute("aria-current", "location");
-            }
+        link.className = "site-nav__link";
+        if (document.body.dataset.category === category.id) {
+            link.classList.add("is-active");
+            link.setAttribute("aria-current", "location");
         }
 
         return link;
@@ -132,11 +124,6 @@
     function renderCategoryNavigation(categories) {
         categoryNavMounts.forEach((mount) => {
             const links = categories.map((category) => createCategoryLink(category));
-            mount.replaceChildren(...links);
-        });
-
-        footerCategoryMounts.forEach((mount) => {
-            const links = categories.map((category) => createCategoryLink(category, true));
             mount.replaceChildren(...links);
         });
     }
