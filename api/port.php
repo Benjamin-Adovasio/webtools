@@ -1,30 +1,11 @@
 <?php
-header('Content-Type: application/json');
-header('Cache-Control: no-store');
-
-$data = json_decode(file_get_contents('php://input'), true);
-$host = $data['host'] ?? null;
-$port = intval($data['port'] ?? 0);
-
-if (!$host || $port < 1 || $port > 65535) {
-    http_response_code(400);
-    echo json_encode(["error" => "Invalid input"]);
-    exit;
-}
-
-$ip = gethostbyname($host);
-if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
-    http_response_code(403);
-    echo json_encode(["error" => "Private or reserved IPs not allowed"]);
-    exit;
-}
-
-$connection = @fsockopen($host, $port, $errno, $errstr, 3);
-
-echo json_encode([
-    "host" => $host,
-    "port" => $port,
-    "open" => $connection ? true : false
-]);
-
-if ($connection) fclose($connection);
+declare(strict_types=1);
+require __DIR__ . '/common.php';
+$data = request_data();
+$port = $data['port'] ?? null;
+if (!is_int($port) || $port < 1 || $port > 65535) respond(['error' => 'Invalid port'], 400);
+[$host, $ip] = resolve_public_ipv4($data['host'] ?? null);
+$stream = @stream_socket_client("tcp://{$ip}:{$port}", $errno, $errstr, 3, STREAM_CLIENT_CONNECT);
+$open = is_resource($stream);
+if ($open) fclose($stream);
+respond(['host' => $host, 'port' => $port, 'open' => $open]);
